@@ -17,17 +17,21 @@ const BreakException = {};
 //
 
 const versusElem = document.querySelector("#versus");
+const streamerElem = document.getElementById("streamer");
 
 //
 // ─── CONNECTING TO TWITCH CHAT ──────────────────────────────────────────────────
 //
+
+let streamer = "jericho";
+streamerElem.innerHTML = `Streamer: ${streamer.toUpperCase()} @ <a href="https://www.twitch.tv/${streamer}"><i class="fa fa-twitch" aria-hidden="true"></i></a>`;
 
 const client = new tmi.Client({
   connection: {
     secure: true,
     reconnect: true,
   },
-  channels: ["fl0m"],
+  channels: [streamer],
 });
 
 client.connect().catch(console.error);
