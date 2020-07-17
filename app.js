@@ -17,13 +17,14 @@ const BreakException = {};
 //
 
 const versusElem = document.querySelector("#versus");
+const ratioElem = document.querySelector("#ratio");
 const streamerElem = document.getElementById("streamer");
 
 //
 // ─── CONNECTING TO TWITCH CHAT ──────────────────────────────────────────────────
 //
 
-let streamer = "jericho";
+let streamer = "fl0m";
 streamerElem.innerHTML = `Streamer: ${streamer.toUpperCase()} @ <a href="https://www.twitch.tv/${streamer}"><i class="fa fa-twitch" aria-hidden="true"></i></a>`;
 
 const client = new tmi.Client({
@@ -59,15 +60,12 @@ client.on("message", (channel, tags, message, self) => {
   try {
     messageParts.forEach((word) => {
       if (POGCHAMP.includes(word.toLowerCase())) {
-        console.log(message);
         counts.pog++;
         throw BreakException;
       } else if (FOURHEAD.includes(word.toLowerCase())) {
-        console.log(message);
         counts.fourHead++;
         throw BreakException;
       } else if (LUL.includes(word.toLowerCase())) {
-        console.log(message);
         counts.lul++;
         throw BreakException;
       }
@@ -75,7 +73,19 @@ client.on("message", (channel, tags, message, self) => {
   } catch (e) {
     if (e !== BreakException) console.log(e);
   }
+
+  // ────────────────────────────────────────────────────────────────────────────────
+
+  const sum = Object.values(counts).reduce((t, n) => t + n);
+  const ratio = (count) => {
+    return (count / sum) * 100;
+  };
   versusElem.textContent = `${counts.lul} LULs vs. ${counts.pog} POGs vs. ${counts.fourHead} 4Heads`;
+  if (sum != 0) {
+    ratioElem.textContent = `Ratios: ${ratio(counts.lul)}% LULs, ${ratio(
+      counts.pog
+    )}% POGs, ${ratio(counts.fourHead)}% 4Heads!`;
+  }
 });
 
 //
