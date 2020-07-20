@@ -24,7 +24,7 @@ const streamerElem = document.getElementById("streamer");
 // ─── CONNECTING TO TWITCH CHAT ──────────────────────────────────────────────────
 //
 
-let streamer = "fl0m";
+let streamer = "jericho";
 streamerElem.innerHTML = `Streamer: ${streamer.toUpperCase()} @ <a href="https://www.twitch.tv/${streamer}"><i class="fa fa-twitch" aria-hidden="true"></i></a>`;
 
 const client = new tmi.Client({
