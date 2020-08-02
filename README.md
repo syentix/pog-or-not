@@ -14,6 +14,4 @@ Later on you should be able to input any streamer by username and the streamer w
 * [X] Show ratio of emotes.
 * [ ] Give feedback to streamer (Nice little sentence/ funny comment).
 
-### Ideas: 
-* [ ] Add streamer to database and count can be updated every 10 mins
-* [ ] The latest count will be shown, if streamer was inputted
+__Small little project  powered by the folks @ [tmi.js](https://github.com/tmijs/tmi.js)__
