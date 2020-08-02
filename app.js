@@ -24,7 +24,7 @@ const streamerElem = document.getElementById("streamer");
 // ─── CONNECTING TO TWITCH CHAT ──────────────────────────────────────────────────
 //
 
-let streamer = "fl0m";
+let streamer = "jericho";
 streamerElem.innerHTML = `Streamer: ${streamer.toUpperCase()} @ <a href="https://www.twitch.tv/${streamer}"><i class="fa fa-twitch" aria-hidden="true"></i></a>`;
 
 const client = new tmi.Client({
@@ -82,9 +82,11 @@ client.on("message", (channel, tags, message, self) => {
   };
   versusElem.textContent = `${counts.lul} LULs vs. ${counts.pog} POGs vs. ${counts.fourHead} 4Heads`;
   if (sum != 0) {
-    ratioElem.textContent = `Ratios: ${ratio(counts.lul)}% LULs, ${ratio(
-      counts.pog
-    )}% POGs, ${ratio(counts.fourHead)}% 4Heads!`;
+    ratioElem.textContent = `Ratios: ${ratio(counts.lul).toFixed(
+      2
+    )}% LULs, ${ratio(counts.pog).toFixed(2)}% POGs, ${ratio(
+      counts.fourHead
+    ).toFixed(2)}% 4Heads!`;
   }
 });
 
