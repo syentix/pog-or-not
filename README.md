@@ -3,8 +3,13 @@
 
 Website that counts the usage of emotes. Analyses the stream by pogness and 5headness...
 
-This is currently in a very early stage. For now the streamer has to be hardcoded, since I didn't really get far that night i made this app.
-Later on you should be able to input any streamer by username and the streamer will be added to a database. 
+By entering a streamer's username, a tmi.js client will enter the chat and count the amount of emotes that are recognized by my code: 
+* pog, poggers
+* lul, lol
+* 4head, 5head
+
+Then the website will display the amount of each category and give a ratio.
+When changing the streamer, the count object gets reset and will diconnect from the previous channel and enters the new chat.
 
 ### TODO: 
 
