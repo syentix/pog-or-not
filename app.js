@@ -35,6 +35,8 @@ const outputStreamerStats = (client, streamer) => {
   //
 
   client.connect().catch(console.error);
+  if (console.error != null) {
+  }
 
   //
   // ──────────────────────────────────────────────────────────────── CONNECTED ─────
@@ -69,7 +71,8 @@ const outputStreamerStats = (client, streamer) => {
 
     const sum = Object.values(counts).reduce((t, n) => t + n);
     const ratio = (count) => {
-      return ((count / sum) * 100).toFixed(2);
+      const result = ((count / sum) * 100).toFixed(2);
+      return isNaN(result) ? 0 : result;
     };
     pogElem.textContent = `${counts.pog} POGs (${ratio(counts.pog)}%)`;
     lulElem.textContent = `${counts.lul} LULs (${ratio(counts.lul)}%)`;
@@ -96,13 +99,26 @@ let client = new tmi.Client({
 });
 
 document.querySelector("#streamerForm").addEventListener("submit", (e) => {
-  client.disconnect();
   for (let key in counts) {
     counts[key] = 0;
   }
   e.preventDefault();
+  client.disconnect();
+  // Sanitize
+  const sanitize = (string) => {
+    const map = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#x27;",
+      "/": "&#x2F;",
+    };
+    const reg = /[&<>"'/]/gi;
+    return string.replace(reg, (match) => map[match]);
+  };
+  const streamer = sanitize(document.getElementById("usernameInput").value);
 
-  const streamer = document.getElementById("usernameInput").value;
   client = new tmi.Client({
     connection: {
       secure: true,
