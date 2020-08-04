@@ -38,7 +38,7 @@ const outputStreamerStats = (client, streamer) => {
     client
       .join(streamer)
       .then(() => {
-        streamerElem.innerHTML = `Streamer: ${streamer.toUpperCase()} @ <a href="https://www.twitch.tv/${streamer}"><i class="fa fa-twitch" aria-hidden="true"></i></a>`;
+        streamerElem.innerHTML = `Watching ${streamer.toUpperCase()} @ <a href="https://www.twitch.tv/${streamer}" target="_blank"><i class="fa fa-twitch" aria-hidden="true"></i></a>`;
         streamerElem.style = "color: #606c76;";
       })
       .catch((error) => {
