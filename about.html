@@ -3,55 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pog or not?</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
       integrity="sha512-CQw8fBrTrIafAzH3rPnvche6JJfBur5Y//Ea1iBJW9IJNbdgfIFgH11jSmIy1offAIB+Z1s9bgNocphhgDJSrQ=="
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="app.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
     />
+    <style>
+      body {
+        margin: 3rem;
+        text-align: center;
+      }
+    </style>
+    <title>About</title>
   </head>
   <body>
     <h3 style="display: inline-block; border-bottom: 2px solid gray;">
-      Pog or not❓ - <a style="color: #606c76;" href="/about.html">About</a>
-    </h2>
-
-    <div>
-      <p id="streamer"></p>
-
-      <ul>
-        <li id="lul">Waiting for messages...</li>
-        <li id="pog">Waiting for messages...</li>
-        <li id="four-head">Waiting for messages...</li>
-      </ul>
-
+        About - <a style="color: #606c76;" href="/index.html">Home</a>
+      </h2>
+    <p>
+      This site counts the amount of emotes used in the twitch chat of a given
+      streamer.
       <br />
-
-      <form id="streamerForm">
-        <fieldset>
-          <label for="usernameInput">Change Streamer</label>
-          <input
-            style="width: 25%;"
-            type="text"
-            id="usernameInput"
-            placeholder="Username"
-          />
-          <button type="submit" id="submitButton">Submit</button>
-        </fieldset>
-      </form>
-    </div>
-
-    <script src="tmi.min.js"></script>
-    <script src="app.js"></script>
-    <hr>
+      Additionally the ratio in comparison to the other categories is given.
+    </p>
+    <details>
+      <summary>Supported Categories</summary>
+      <ul style="margin-top: 1rem; margin-left: 3rem; display: block;">
+        <li>POG (poggers, pog)</li>
+        <li>LOL (lol, lul)</li>
+        <li>4Head (4head, 5head)</li>
+      </ul>
+    </details>
   </body>
+  <hr>
   <footer style="background-color: #E0E0E0;">
     <p style="padding-top: 1rem; padding-bottom: 1rem; font-size: 13px;">
         Created by Ole and maintained on <a href="https://github.com/syentix/pog-or-not" style="color: black"><i class="fa fa-github" aria-hidden="true"></i></a>

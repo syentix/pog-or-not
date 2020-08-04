@@ -34,9 +34,10 @@ const outputStreamerStats = (client, streamer) => {
   // ─── CONNECTING TO TWITCH CHAT ──────────────────────────────────────────────────
   //
 
-  client.connect().catch(console.error);
-  if (console.error != null) {
-  }
+  client.connect().catch(() => {
+    streamerElem.innerHTML = "Streamer not found. Try again.";
+    streamerElem.style = "color: red;";
+  });
 
   //
   // ──────────────────────────────────────────────────────────────── CONNECTED ─────
