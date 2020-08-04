@@ -28,16 +28,24 @@ let counts = {
 };
 
 const outputStreamerStats = (client, streamer) => {
-  streamerElem.innerHTML = `Streamer: ${streamer.toUpperCase()} @ <a href="https://www.twitch.tv/${streamer}"><i class="fa fa-twitch" aria-hidden="true"></i></a>`;
-
   //
   // ─── CONNECTING TO TWITCH CHAT ──────────────────────────────────────────────────
   //
+  client.connect().catch(console.error);
 
-  client.connect().catch(() => {
-    streamerElem.innerHTML = "Streamer not found. Try again.";
-    streamerElem.style = "color: red;";
-  });
+  setTimeout(() => {
+    client
+      .join(streamer)
+      .then(() => {
+        streamerElem.innerHTML = `Streamer: ${streamer.toUpperCase()} @ <a href="https://www.twitch.tv/${streamer}"><i class="fa fa-twitch" aria-hidden="true"></i></a>`;
+        streamerElem.style = "color: #606c76;";
+      })
+      .catch((error) => {
+        console.error(error);
+        streamerElem.innerHTML = "Streamer not found. Try again.";
+        streamerElem.style = "color: red;";
+      });
+  }, 1200);
 
   //
   // ──────────────────────────────────────────────────────────────── CONNECTED ─────
