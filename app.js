@@ -45,7 +45,7 @@ const outputStreamerStats = (client, streamer) => {
         streamerElem.innerHTML = "Streamer not found. Try again.";
         streamerElem.style = "color: red;";
       });
-  }, 1200);
+  }, 1350);
 
   //
   // ──────────────────────────────────────────────────────────────── CONNECTED ─────
