@@ -31,6 +31,7 @@ const outputStreamerStats = (client, streamer) => {
   //
   // ─── CONNECTING TO TWITCH CHAT ──────────────────────────────────────────────────
   //
+
   client.connect().catch(console.error);
 
   setTimeout(() => {
