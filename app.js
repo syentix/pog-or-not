@@ -43,7 +43,7 @@ const outputStreamerStats = (client, streamer) => {
       .catch((error) => {
         console.error(error);
         streamerElem.innerHTML = "Streamer not found. Try again.";
-        streamerElem.style = "color: red;";
+        streamerElem.style = "color: #FF4136;";
       });
   }, 1350);
 
